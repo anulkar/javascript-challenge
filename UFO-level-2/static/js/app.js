@@ -48,25 +48,32 @@ function populateDropdowns(ufoSightings)
   var countryFilter = d3.select("#country-filter");
   var shapeFilter = d3.select("#shape-filter");
 
+  // Grab all the states from the dataset
   var states = ufoSightings.map(function(ufo) {
     return ufo.state.toUpperCase();
   });
+  // De-dup the states, sort and save to a new array
   states = Array.from(new Set(states)).sort();
+  // Populate the State dropdown filter with the new array of values
   stateFilter.selectAll("option").data(states).enter().append("option").text(function(state) {return state;});
 
+  // Grab all the countries from the dataset
   var countries = ufoSightings.map(function(ufo) {
     return ufo.country.toUpperCase();
   });
+  // De-dup the countries, sort and save to a new array
   countries = Array.from(new Set(countries)).sort();
+  // Populate the Country dropdown filter with the new array of values
   countryFilter.selectAll("option").data(countries).enter().append("option").text(function(country) {return country;});
 
+  // Grab all the shapes from the dataset
   var shapes = ufoSightings.map(function(ufo) {
     return ufo.shape;
   });
+  // De-dup the shapes, sort and save to a new array
   shapes = Array.from(new Set(shapes)).sort();
+  // Populate the Shape dropdown filter with the new array of values
   shapeFilter.selectAll("option").data(shapes).enter().append("option").text(function(shape) {return shape;});
-
-  
 }
 
 /*
@@ -76,10 +83,10 @@ function populateDropdowns(ufoSightings)
 filterTableButton.on("click", function(){
   // Select all the form-control input elements
   var dateInputElement = d3.select("#datetime");
-  var cityInputElement = d3.select("#city");
-  var stateInputElement = d3.select("#state");
-  var countryInputElement = d3.select("#country");
-  var shapeInputElement = d3.select("#shape");
+  var cityInputElement = d3.select("#city-filter");
+  var stateInputElement = d3.select("#state-filter");
+  var countryInputElement = d3.select("#country-filter");
+  var shapeInputElement = d3.select("#shape-filter");
 
   // Get the value property of all the form-control elements
   var dateInputValue = dateInputElement.property("value");
