@@ -16,30 +16,47 @@ function displayUFOSightings(ufoSightings)
     // Get a reference to the table body
     var tbody = d3.select("tbody");
 
-    // Remove all rows so we can display all data from scratch based on user input 
-    d3.selectAll("td").remove();
+    // Get a reference to the table heading to display the search result count
+    var ufoSearchResult = d3.select("#ufo-count");
 
-    ufoSightings.forEach((ufo) => 
+    // Store the count of UFOs in the dataset
+    var ufoCount = ufoSightings.length;
+
+    // Display results in the table
+    if (ufoCount === 0)
       {
-        var row = tbody.append("tr");
-        Object.entries(ufo).forEach(([key, value]) => 
+        ufoSearchResult.text("Sorry, could not find any UFOs..try searching again!");
+        // Remove all rows so we can display all data from scratch based on user input 
+        d3.selectAll("td").remove();
+      }
+    else
+      {
+        ufoSearchResult.text("Total UFO Sightings: " + ufoCount);
+        // Remove all rows so we can display all data from scratch based on user input 
+        d3.selectAll("td").remove();
+
+        ufoSightings.forEach((ufo) => 
           {
-            var cell = row.append("td");
-            if (key == "state" || key == "country")
+            var row = tbody.append("tr");
+            Object.entries(ufo).forEach(([key, value]) => 
               {
-              // Convert state and country abbreviations to upper case
-              cell.text(value.toUpperCase());
-              }
-            else
-              {
-              cell.text(value);
-              }
+                var cell = row.append("td");
+                if (key == "state" || key == "country")
+                  {
+                  // Convert state and country abbreviations to upper case
+                  cell.text(value.toUpperCase());
+                  }
+                else
+                  {
+                  cell.text(value);
+                  }
+              });
           });
-      });
+      }
   }
 
 /*
-1. Listen for the `Filter Table` button click event
+1. Listen for the `Search UFOs` button click event
 2. Search through the date/time column of the ufoSightings object to find rows that match user input.
 */
 filterTableButton.on("click", function(){
