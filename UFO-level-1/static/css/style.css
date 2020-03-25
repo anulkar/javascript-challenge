@@ -57,11 +57,8 @@ body {
   margin-top: 50px;
 }
 
-.filters .panel-body {
-  padding: 0;
-}
-
 .filters {
+  padding: 0;
   margin-top: 10px;
 }
 
