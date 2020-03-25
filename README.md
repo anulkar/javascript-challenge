@@ -1,2 +1,1 @@
-# javascript-challenge
-Data Science Activity: JavaScript and DOM Manipulation
+# Data Science Activity: JavaScript and DOM Manipulation
