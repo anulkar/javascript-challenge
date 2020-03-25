@@ -16,6 +16,7 @@
 ## Multiple Search Categories
 
 * Using `input` tags and `select` dropdowns, wrote a [JavaScript app](https://github.com/anulkar/javascript-challenge/blob/master/UFO-level-2/static/js/app.js) to allow users to set multiple filters and search criteria on the [UFO sightings HTML page](https://github.com/anulkar/javascript-challenge/blob/master/UFO-level-2/index.html) based on the following table columns:
+
   1. `date/time`
   2. `city`
   3. `state`
